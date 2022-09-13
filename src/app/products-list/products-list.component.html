@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="coffe-table">
+        <div class="item" *ngFor="let product of products | async | paginate : { size: pageSize, page: page }; index as i">
+            <div class="index">{{pageSize*(page-1)+i+1}}</div>
+            <div class="info">
+                <div>{{product.blend_name}}</div>
+                <div>{{product.intensifier}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="pages">
+        <div class="pn" (click)="setPage(i+1)" *ngFor="let p of [].constructor(((products | async)?.length || 0) / pageSize); index as i">
+            {{i + 1}}
+        </div>
+    </div>
+</div>
